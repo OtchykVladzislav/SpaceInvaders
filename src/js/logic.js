@@ -117,7 +117,7 @@ function isShoot(){
 }
 
 
-document.addEventListener("keydown", (event) => {
+document.addEventListener("keyup", (event) => {
     if(event.keyCode === 37 && player.pos.x !== 0){
         player.pos.x--
     }
@@ -187,6 +187,16 @@ function gameOver() {
         context.fillStyle = "white"
         context.font='4px Verdana';
         context.fillText("Game Over!", 4, 12);
+        context.font='2.5px Verdana';
+        context.fillText(`Score:${score}`, 12, 15);
+        cancelAnimationFrame(id)
+    }
+    else if(score === 90){
+        game = false
+        drawArena();
+        context.fillStyle = "white"
+        context.font='4px Verdana';
+        context.fillText("You win!", 9, 12);
         context.font='2.5px Verdana';
         context.fillText(`Score:${score}`, 12, 15);
         cancelAnimationFrame(id)
